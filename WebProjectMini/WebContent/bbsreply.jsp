@@ -42,6 +42,7 @@
 				return false; 
 			}
 		}
+		
 		document.myreplyform.submit();
 	}
 	

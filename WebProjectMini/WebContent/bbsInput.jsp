@@ -38,7 +38,9 @@
 
 			document.myform.submit();
 		}// bbsinput end
+	</script>
 		
+	<script type="text/javascript">
 		// 스마트 에디터
 		var oEditors = [];
 		
@@ -65,44 +67,43 @@
 				}, */
 				fCreator: "createSEditor2" 
 			});
-		
-		// 전송버튼 처리
-		$("#savebutton").click(function() {
-				//id가 smarteditor인 textarea에 에디터에서 대입
-				oEditors.getById["content"].exec("UPDATE_CONTENTS_FIELD", []);
-				
-				var content = $('#content').val();
-					
-					if (title == '' || content == '' || content == '<p>&nbsp;</p>') 
-					{
-						alert("내용을 입력하세요.");	
-						return false;
-					} else {
-						//폼 submit
-						$("#writeForm").submit();
-					}
-			})
 			
-		$("#resetbutton").click(function() 
-		{
-			oEditors.getById["content"].exec("SET_IR", [""]);
-		})
-	});
-		
-	$(document).ready(function(){ 
-		var fileTarget = $('.filebox .upload-hidden'); 
-		fileTarget.on('change', function(){ // 값이 변경되면 
-			if(window.FileReader){ // modern browser 
-				var filename = $(this)[0].files[0].name; 
-			} else { // old IE 
-				var filename = $(this).val().split('/').pop().split('\\').pop(); // 파일명만 추출 
-			} 
-		
-		// 추출한 파일명 삽입 
-		$(this).siblings('.upload-name').val(filename); 
-		}); 
-	});
-
+			// 전송버튼 처리
+			$("#savebutton").click(function() {
+					//id가 smarteditor인 textarea에 에디터에서 대입
+					oEditors.getById["content"].exec("UPDATE_CONTENTS_FIELD", []);
+					
+					var content = $('#content').val();
+						
+						if (title == '' || content == '' || content == '<p>&nbsp;</p>') 
+						{
+							alert("내용을 입력하세요.");	
+							return false;
+						} else {
+							//폼 submit
+							$("#writeForm").submit();
+						}
+				})
+				
+			$("#resetbutton").click(function() 
+			{
+				oEditors.getById["content"].exec("SET_IR", [""]);
+			})
+		});
+			
+		$(document).ready(function(){ 
+			var fileTarget = $('.filebox .upload-hidden'); 
+			fileTarget.on('change', function(){ // 값이 변경되면 
+				if(window.FileReader){ // modern browser 
+					var filename = $(this)[0].files[0].name; 
+				} else { // old IE 
+					var filename = $(this).val().split('/').pop().split('\\').pop(); // 파일명만 추출 
+				} 
+			
+			// 추출한 파일명 삽입 
+			$(this).siblings('.upload-name').val(filename); 
+			}); 
+		});
 	</script>
 </head>
 <body>
@@ -148,11 +149,11 @@
 	                <tr>
 	                    <th>파일등록</th>
 	                    <td>
-	                   	<div class="filebox"> 
-	                   		<input class="upload-name" value="파일선택" disabled="disabled"> 
-	                   		<label for="ex_filename">업로드</label> 
-	                   		<input type="file" id="ex_filename" name="fileName" class="upload-hidden"> 
-	                   	</div>
+		                   	<div class="filebox"> 
+		                   		<input class="upload-name" value="파일선택" disabled="disabled"> 
+		                   		<label for="ex_filename">업로드</label> 
+		                   		<input type="file" id="ex_filename" name="fileName" class="upload-hidden"> 
+		                   	</div>
 						</td>
 	                </tr>
 	            </table>
